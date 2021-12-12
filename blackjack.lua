@@ -83,7 +83,6 @@ local function drawCardNumber(x, y, symbol, card)
         drawPixel(card, x + 2, y + 2, colors.black)
         drawPixel(card, x + 2, y + 7, colors.black)
 
-        
         drawPixel(card, x + 3, y + 1, colors.black)
         drawPixel(card, x + 3, y + 2, colors.black)
         drawPixel(card, x + 3, y + 3, colors.black)
@@ -92,15 +91,14 @@ local function drawCardNumber(x, y, symbol, card)
         drawPixel(card, x + 3, y + 6, colors.black)
         drawPixel(card, x + 3, y + 7, colors.black)
 
-        
         drawPixel(card, x + 4, y + 7, colors.black)
         drawPixel(card, x + 5, y + 7, colors.black)
-    else 
-        if symbol == 2 then 
-        
+    else
+        if symbol == 2 then
+
             drawPixel(card, x + 1, y + 2, colors.black)
             drawPixel(card, x + 1, y + 7, colors.black)
-    
+
             drawPixel(card, x + 2, y + 1, colors.black)
             drawPixel(card, x + 2, y + 7, colors.black)
             drawPixel(card, x + 2, y + 6, colors.black)
@@ -112,15 +110,14 @@ local function drawCardNumber(x, y, symbol, card)
             drawPixel(card, x + 4, y + 1, colors.black)
             drawPixel(card, x + 4, y + 4, colors.black)
             drawPixel(card, x + 4, y + 7, colors.black)
-    
-            
+
             drawPixel(card, x + 5, y + 2, colors.black)
             drawPixel(card, x + 5, y + 3, colors.black)
             drawPixel(card, x + 5, y + 7, colors.black)
 
-        else 
-            if symbol == 3 then 
-            
+        else
+            if symbol == 3 then
+
                 drawPixel(card, x + 1, y + 2, colors.black)
                 drawPixel(card, x + 1, y + 6, colors.black)
 
@@ -139,14 +136,14 @@ local function drawCardNumber(x, y, symbol, card)
                 drawPixel(card, x + 5, y + 5, colors.black)
                 drawPixel(card, x + 5, y + 6, colors.black)
 
-            else 
-                if symbol == 4 then 
-                
+            else
+                if symbol == 4 then
+
                     drawPixel(card, x + 2, y + 1, colors.black)
                     drawPixel(card, x + 2, y + 2, colors.black)
                     drawPixel(card, x + 2, y + 3, colors.black)
                     drawPixel(card, x + 2, y + 4, colors.black)
-    
+
                     drawPixel(card, x + 3, y + 4, colors.black)
 
                     drawPixel(card, x + 4, y + 1, colors.black)
@@ -156,10 +153,10 @@ local function drawCardNumber(x, y, symbol, card)
                     drawPixel(card, x + 4, y + 5, colors.black)
                     drawPixel(card, x + 4, y + 6, colors.black)
                     drawPixel(card, x + 4, y + 7, colors.black)
-    
-                else 
-                    if symbol == 5 then 
-                    
+
+                else
+                    if symbol == 5 then
+
                         drawPixel(card, x + 1, y + 1, colors.black)
                         drawPixel(card, x + 1, y + 2, colors.black)
                         drawPixel(card, x + 1, y + 3, colors.black)
@@ -168,7 +165,7 @@ local function drawCardNumber(x, y, symbol, card)
                         drawPixel(card, x + 2, y + 1, colors.black)
                         drawPixel(card, x + 2, y + 4, colors.black)
                         drawPixel(card, x + 2, y + 7, colors.black)
-    
+
                         drawPixel(card, x + 3, y + 1, colors.black)
                         drawPixel(card, x + 3, y + 4, colors.black)
                         drawPixel(card, x + 3, y + 7, colors.black)
@@ -180,10 +177,10 @@ local function drawCardNumber(x, y, symbol, card)
                         drawPixel(card, x + 5, y + 1, colors.black)
                         drawPixel(card, x + 5, y + 5, colors.black)
                         drawPixel(card, x + 5, y + 6, colors.black)
-        
-                    else 
-                        if symbol == 6 then 
-                        
+
+                    else
+                        if symbol == 6 then
+
                             drawPixel(card, x + 1, y + 1, colors.black)
                             drawPixel(card, x + 1, y + 2, colors.black)
                             drawPixel(card, x + 1, y + 3, colors.black)
@@ -209,8 +206,7 @@ local function drawCardNumber(x, y, symbol, card)
                             drawPixel(card, x + 5, y + 5, colors.black)
                             drawPixel(card, x + 5, y + 6, colors.black)
                             drawPixel(card, x + 5, y + 7, colors.black)
-                            
-            
+
                         end
                     end
                 end
@@ -228,7 +224,7 @@ local function drawSymbol(x, y, symbol, card)
     card.setPaletteColour(colors.gray, 0.22, 0.22, 0.22)
 
     if symbol == "club" then
-        
+
         drawPixel(card, x + 1, y + 3, colors.gray)
         drawPixel(card, x + 1, y + 2, colors.gray)
 
@@ -236,7 +232,6 @@ local function drawSymbol(x, y, symbol, card)
         drawPixel(card, x + 2, y + 3, colors.black)
         drawPixel(card, x + 2, y + 2, colors.gray)
         drawPixel(card, x + 2, y + 1, colors.gray)
-
 
         drawPixel(card, x + 3, y + 5, colors.black)
         drawPixel(card, x + 3, y + 4, colors.black)
@@ -248,13 +243,11 @@ local function drawSymbol(x, y, symbol, card)
         drawPixel(card, x + 4, y + 3, colors.black)
         drawPixel(card, x + 4, y + 2, colors.black)
 
-
         drawPixel(card, x + 5, y + 3, colors.black)
         drawPixel(card, x + 5, y + 2, colors.black)
 
     else
         if symbol == "heart" then
-        
 
             drawPixel(card, x + 1, y + 3, colors.pink)
             drawPixel(card, x + 1, y + 2, colors.pink)
@@ -263,7 +256,7 @@ local function drawSymbol(x, y, symbol, card)
             drawPixel(card, x + 2, y + 3, colors.red)
             drawPixel(card, x + 2, y + 2, colors.pink)
             drawPixel(card, x + 2, y + 1, colors.pink)
-            
+
             drawPixel(card, x + 3, y + 5, colors.red)
             drawPixel(card, x + 3, y + 4, colors.red)
             drawPixel(card, x + 3, y + 3, colors.red)
@@ -276,12 +269,6 @@ local function drawSymbol(x, y, symbol, card)
 
             drawPixel(card, x + 5, y + 3, colors.red)
             drawPixel(card, x + 5, y + 2, colors.red)
-
-
-            
-
-
-
 
         else
             if symbol == "diamonds" then
@@ -313,7 +300,6 @@ local function drawSymbol(x, y, symbol, card)
                     drawPixel(card, x + 2, y + 5, colors.black)
                     drawPixel(card, x + 2, y + 3, colors.gray)
                     drawPixel(card, x + 2, y + 2, colors.gray)
-                   
 
                     drawPixel(card, x + 3, y + 5, colors.black)
                     drawPixel(card, x + 3, y + 4, colors.black)
@@ -324,7 +310,7 @@ local function drawSymbol(x, y, symbol, card)
                     drawPixel(card, x + 4, y + 5, colors.black)
                     drawPixel(card, x + 4, y + 3, colors.black)
                     drawPixel(card, x + 4, y + 2, colors.black)
-            
+
                     drawPixel(card, x + 5, y + 3, colors.black)
 
                 end
@@ -334,22 +320,33 @@ local function drawSymbol(x, y, symbol, card)
 
 end
 
-local margin = 8
-local gap = 4
 
+local function instantiateHitButton(term, startX, startY, finalX, finalY, colors)
+    drawPixelBox(hitButton, startX, startY, finalX, finalY, colors)
+    hitButton.redraw()
+
+        local event, side, x, y = os.pullEvent("monitor_touch")
+        if x >= startX and x <= finalX and y >= startY and y >= finalY then
+        end
+    end
+
+local margin = 16.5
 local cardWidth = 24
 local cardHeight = 24
 
-
 local monitor = peripheral.wrap("back")
+
 print(monitor.getSize())
 
 monitor.clear()
 monitor.setBackgroundColor(colors.green)
 monitor.setCursorPos(1, 1)
-monitor.setTextScale(0.8)
+monitor.setTextScale(0.6)
 
-local dealerCard = window.create(monitor, 27, 2, cardWidth, cardHeight, true)
+
+instantiateHitButton(monitor, 0, 0, 30, 10, colors.white)
+
+local dealerCard = window.create(monitor, 27, 8, cardWidth, cardHeight, true)
 dealerCard.setBackgroundColor(colors.green)
 dealerCard.clear()
 drawBlankCard(dealerCard)
@@ -357,13 +354,15 @@ drawSymbol(12, 3, "heart", dealerCard)
 drawCardNumber(5, 10, 2, dealerCard)
 dealerCard.redraw()
 
-local SecondDealerCard = window.create(monitor, 55, 2, cardWidth, cardHeight, true)
+local SecondDealerCard = window.create(monitor, 55, 8, cardWidth, cardHeight,
+                                       true)
 SecondDealerCard.setBackgroundColor(colors.green)
 SecondDealerCard.clear()
 drawHiddenCard(SecondDealerCard)
 SecondDealerCard.redraw()
 
-local playerCard = window.create(monitor, margin, 40, cardWidth, cardHeight, true)
+local playerCard = window.create(monitor, margin, 35, cardWidth, cardHeight,
+                                 true)
 playerCard.setBackgroundColor(colors.green)
 playerCard.clear()
 drawBlankCard(playerCard)
@@ -372,14 +371,16 @@ drawCardNumber(5, 10, 6, playerCard)
 drawBlankCard(playerCard)
 playerCard.redraw()
 
-local SecondPlayerCard = window.create(monitor, margin+cardWidth+gap, 40, cardWidth, cardHeight, true)
+local SecondPlayerCard = window.create(monitor, margin + cardWidth, 35,
+                                       cardWidth, cardHeight, true)
 SecondPlayerCard.setBackgroundColor(colors.green)
 SecondPlayerCard.clear()
-drawHiddenCard(SecondPlayerCard)
+drawBlankCard(SecondPlayerCard)
 SecondPlayerCard.redraw()
 
-local ThirdPlayerCard = window.create(monitor, margin+cardWidth+gap+cardWidth+gap, 40, cardWidth, cardHeight, true)
+local ThirdPlayerCard = window.create(monitor, margin + cardWidth * 2, 35,
+                                      cardWidth, cardHeight, true)
 ThirdPlayerCard.setBackgroundColor(colors.green)
 ThirdPlayerCard.clear()
-drawHiddenCard(ThirdPlayerCard)
+drawBlankCard(ThirdPlayerCard)
 ThirdPlayerCard.redraw()
