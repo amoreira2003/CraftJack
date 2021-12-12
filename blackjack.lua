@@ -334,14 +334,22 @@ local function drawSymbol(x, y, symbol, card)
 
 end
 
+local margin = 8
+local gap = 4
+
+local cardWidth = 24
+local cardHeight = 24
+
+
 local monitor = peripheral.wrap("back")
+print(monitor.getSize())
 
 monitor.clear()
 monitor.setBackgroundColor(colors.green)
 monitor.setCursorPos(1, 1)
 monitor.setTextScale(0.8)
 
-local dealerCard = window.create(monitor, 27, 2, 24, 24, true)
+local dealerCard = window.create(monitor, 27, 2, cardWidth, cardHeight, true)
 dealerCard.setBackgroundColor(colors.green)
 dealerCard.clear()
 drawBlankCard(dealerCard)
@@ -349,22 +357,29 @@ drawSymbol(12, 3, "heart", dealerCard)
 drawCardNumber(5, 10, 2, dealerCard)
 dealerCard.redraw()
 
-local dealerCard2 = window.create(monitor, 55, 2, 24, 24, true)
-dealerCard2.setBackgroundColor(colors.green)
-dealerCard2.clear()
-drawHiddenCard(dealerCard2)
-dealerCard2.redraw()
+local SecondDealerCard = window.create(monitor, 55, 2, cardWidth, cardHeight, true)
+SecondDealerCard.setBackgroundColor(colors.green)
+SecondDealerCard.clear()
+drawHiddenCard(SecondDealerCard)
+SecondDealerCard.redraw()
 
-local playerCard = window.create(monitor, 27, 52, 24, 24, true)
+local playerCard = window.create(monitor, margin, 40, cardWidth, cardHeight, true)
 playerCard.setBackgroundColor(colors.green)
 playerCard.clear()
 drawBlankCard(playerCard)
 drawSymbol(12, 3, "arrow", playerCard)
 drawCardNumber(5, 10, 6, playerCard)
+drawBlankCard(playerCard)
 playerCard.redraw()
 
-local playerCard2 = window.create(monitor, 55, 52, 24, 24, true)
-playerCard2.setBackgroundColor(colors.green)
-playerCard2.clear()
-drawHiddenCard(playerCard2)
-playerCard2.redraw()
+local SecondPlayerCard = window.create(monitor, margin+cardWidth+gap, 40, cardWidth, cardHeight, true)
+SecondPlayerCard.setBackgroundColor(colors.green)
+SecondPlayerCard.clear()
+drawHiddenCard(SecondPlayerCard)
+SecondPlayerCard.redraw()
+
+local ThirdPlayerCard = window.create(monitor, margin+cardWidth+gap+cardWidth+gap, 40, cardWidth, cardHeight, true)
+ThirdPlayerCard.setBackgroundColor(colors.green)
+ThirdPlayerCard.clear()
+drawHiddenCard(ThirdPlayerCard)
+ThirdPlayerCard.redraw()
