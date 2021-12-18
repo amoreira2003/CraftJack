@@ -1,20 +1,20 @@
-local function drawPixel(term, x, y, color)
+function drawPixel(term, x, y, color)
     term.setBackgroundColour(color)
     term.setCursorPos(x, y)
     term.write(" ")
 
 end
 
-local function drawPixelBox(term, startX, startY, finalX, finalY, colors)
+ function drawPixelBox(term, startX, startY, finalX, finalY, colors)
     for x = startX, finalX do
         for y = startY, finalY do drawPixel(term, x, y, colors) end
     end
 
 end
 
-local function drawAlternatePixelBox(term, startX, startY, finalX, finalY,
+ function drawAlternatePixelBox(term, startX, startY, finalX, finalY,
                                      color1, color2)
-    local alternateIndex = 0
+     alternateIndex = 0
     for x = startX, finalX do
 
         for y = startY, finalY do
@@ -36,17 +36,17 @@ local function drawAlternatePixelBox(term, startX, startY, finalX, finalY,
 
 end
 
-local function drawHorizontalPixelLine(term, startX, finalX, indexY, colors)
+ function drawHorizontalPixelLine(term, startX, finalX, indexY, colors)
     for x = startX, finalX do drawPixel(term, x, indexY, colors) end
 
 end
 
-local function drawVerticalPixelLine(term, startY, finalY, indexX, colors)
+ function drawVerticalPixelLine(term, startY, finalY, indexX, colors)
     for y = startY, finalY do drawPixel(term, indexX, y, colors) end
 
 end
 
-local function drawHiddenCard(card)
+ function drawHiddenCard(card)
 
     drawHorizontalPixelLine(card, 2, 20, 2, colors.black)
     drawHorizontalPixelLine(card, 2, 20, 20, colors.black)
@@ -61,7 +61,7 @@ local function drawHiddenCard(card)
 
 end
 
-local function drawBlankCard(card)
+ function drawBlankCard(card)
 
     drawHorizontalPixelLine(card, 2, 20, 2, colors.black)
     drawHorizontalPixelLine(card, 2, 20, 20, colors.black)
@@ -75,7 +75,7 @@ local function drawBlankCard(card)
 
 end
 
-local function drawCardNumber(x, y, symbol, card)
+ function drawCardNumber(x, y, symbol, card)
     if symbol == 1 then
         drawPixel(card, x + 1, y + 3, colors.black)
         drawPixel(card, x + 1, y + 7, colors.black)
@@ -218,7 +218,7 @@ local function drawCardNumber(x, y, symbol, card)
 
 end
 
-local function drawSymbol(x, y, symbol, card)
+ function drawSymbol(x, y, symbol, card)
     card.setPaletteColour(colors.red, 0.82, 0, 0.11)
     card.setPaletteColour(colors.pink, 0.73, 0.01, 0.11)
     card.setPaletteColour(colors.gray, 0.22, 0.22, 0.22)
@@ -320,15 +320,7 @@ local function drawSymbol(x, y, symbol, card)
 
 end
 
-
-local function instantiateHitButton(term, startX, startY, finalX, finalY, colors)
-    drawPixelBox(hitButton, startX, startY, finalX, finalY, colors)
-    hitButton.redraw()
-
-        local event, side, x, y = os.pullEvent("monitor_touch")
-        if x >= startX and x <= finalX and y >= startY and y >= finalY then
-        end
-    end
+os.loadAPI("CraftJack/redbutton.lua")
 
 local margin = 16.5
 local cardWidth = 24
@@ -338,13 +330,14 @@ local monitor = peripheral.wrap("back")
 
 print(monitor.getSize())
 
+
+local mybutton = redbutton.addButton( 5,5,15,2,colors.white,colors.blue,"My Button XD")
+mybutton:draw()
+
 monitor.clear()
 monitor.setBackgroundColor(colors.green)
 monitor.setCursorPos(1, 1)
 monitor.setTextScale(0.6)
-
-
-instantiateHitButton(monitor, 0, 0, 30, 10, colors.white)
 
 local dealerCard = window.create(monitor, 27, 8, cardWidth, cardHeight, true)
 dealerCard.setBackgroundColor(colors.green)
@@ -354,8 +347,7 @@ drawSymbol(12, 3, "heart", dealerCard)
 drawCardNumber(5, 10, 2, dealerCard)
 dealerCard.redraw()
 
-local SecondDealerCard = window.create(monitor, 55, 8, cardWidth, cardHeight,
-                                       true)
+local SecondDealerCard = window.create(monitor, 55, 8, cardWidth, cardHeight, true)
 SecondDealerCard.setBackgroundColor(colors.green)
 SecondDealerCard.clear()
 drawHiddenCard(SecondDealerCard)
@@ -384,3 +376,5 @@ ThirdPlayerCard.setBackgroundColor(colors.green)
 ThirdPlayerCard.clear()
 drawBlankCard(ThirdPlayerCard)
 ThirdPlayerCard.redraw()
+
+
