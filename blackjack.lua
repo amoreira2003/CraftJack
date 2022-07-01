@@ -47,16 +47,12 @@ local thirdPlayerCardType = types[math.random(#types)]
 
 
 local hitButton = window.create(monitor, 13, 55, cardWidth +10, 10, true)
-hitButton.setBackgroundColor(colors.white)
-hitButton.clear()
-hitButton.redraw()
+drawutils.drawHitButton(hitButton)
 
 local standButton = window.create(monitor, cardWidth + 28, 55, cardWidth+10, 10, true)
-standButton.setBackgroundColor(colors.white)
-standButton.clear()
-standButton.redraw()
+drawutils.drawStandButton(standButton)
 
-local dealerCard = window.create(monitor, 27, 8, cardWidth, cardHeight, true)
+local dealerCard = window.create(monitor, 27, 6, cardWidth, cardHeight, true)
 dealerCard.setBackgroundColor(colors.green)
 dealerCard.clear()
 drawutils.drawBlankCard(dealerCard)
@@ -64,7 +60,7 @@ drawutils.drawSymbol(12, 3, dealerCardType, dealerCard)
 drawutils.drawCardNumber(5, 10, dealerCardNumber, dealerCard)
 dealerCard.redraw()
 
-local SecondDealerCard = window.create(monitor, 55, 8, cardWidth, cardHeight, true)
+local SecondDealerCard = window.create(monitor, 55, 6, cardWidth, cardHeight, true)
 SecondDealerCard.setBackgroundColor(colors.green)
 SecondDealerCard.clear()
 drawutils.drawHiddenCard(SecondDealerCard)
@@ -106,9 +102,7 @@ while gameStage == 2 do
     hitButton.redraw()
     standButton.setBackgroundColor(colors.green)
     standButton.clear()
-    standButton.reposition(20, 55, cardWidth+38, 10)
-    standButton.setBackgroundColor(colors.white)
-    standButton.clear()
+    drawutils.drawAGameCard(SecondDealerCard,HiddenCardType,hiddenCardNumber)
     gameStage = 3;
   end
 
