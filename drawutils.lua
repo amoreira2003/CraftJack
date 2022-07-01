@@ -15,6 +15,22 @@ end
 
 end
 
+function module.drawAGameCard(term, cardtype, cardnumber)
+    term.setBackgroundColor(colors.green)
+    term.clear()
+    module.drawBlankCard(term)
+    module.drawSymbol(12, 3, cardtype, term)
+    module.drawCardNumber(5, 10, cardnumber, term)
+    term.redraw()  
+end
+
+function module.moveAGameCard(term, cardtype, cardnumber, x, y)
+    term.setBackgroundColor(colors.green)
+    term.clear()
+    term.reposition(x, y)
+    module.drawAGameCard(term,cardtype,cardnumber)
+end 
+
  function module.drawAlternatePixelBox(term, startX, startY, finalX, finalY, color1, color2)
     alternateIndex = 0
     for x = startX, finalX do
@@ -406,7 +422,10 @@ function module.drawSymbol(x, y, symbol, card)
     card.setPaletteColour(colors.gray, 0.22, 0.22, 0.22)
 
     if symbol == "club" then
-
+        card.setPaletteColour(colors.red, 0.82, 0, 0.11)
+        card.setPaletteColour(colors.pink, 0.73, 0.01, 0.11)
+        card.setPaletteColour(colors.gray, 0.22, 0.22, 0.22)
+        
         module.drawPixel(card, x + 1, y + 3, colors.gray)
         module.drawPixel(card, x + 1, y + 2, colors.gray)
 
@@ -430,6 +449,9 @@ function module.drawSymbol(x, y, symbol, card)
 
     else
         if symbol == "heart" then
+             card.setPaletteColour(colors.red, 0.82, 0, 0.11)
+             card.setPaletteColour(colors.pink, 0.73, 0.01, 0.11)
+             card.setPaletteColour(colors.gray, 0.22, 0.22, 0.22)
 
             module.drawPixel(card, x + 1, y + 3, colors.pink)
             module.drawPixel(card, x + 1, y + 2, colors.pink)

@@ -36,13 +36,23 @@ local HiddenCardType = types[math.random(#types)]
 local dealerCardNumber = numbers[math.random(#numbers)]
 local dealerCardType = types[math.random(#types)]
 
+local firstPlayerCardNumber = numbers[math.random(#numbers)]
+local firstPlayerCardType = types[math.random(#types)]
+
+local secondPlayerCardNumber = numbers[math.random(#numbers)]
+local secondPlayerCardType = types[math.random(#types)]
+
+local thirdPlayerCardNumber = numbers[math.random(#numbers)]
+local thirdPlayerCardType = types[math.random(#types)]
+
+
 local hitButton = window.create(monitor, 13, 55, cardWidth +10, 10, true)
-hitButton.setBackgroundColor(colors.black)
+hitButton.setBackgroundColor(colors.white)
 hitButton.clear()
 hitButton.redraw()
 
 local standButton = window.create(monitor, cardWidth + 28, 55, cardWidth+10, 10, true)
-standButton.setBackgroundColor(colors.black)
+standButton.setBackgroundColor(colors.white)
 standButton.clear()
 standButton.redraw()
 
@@ -60,19 +70,56 @@ SecondDealerCard.clear()
 drawutils.drawHiddenCard(SecondDealerCard)
 SecondDealerCard.redraw()
 
-local playerCard = window.create(monitor, margin, 30, cardWidth, cardHeight, true)
-playerCard.setBackgroundColor(colors.green)
-playerCard.clear()
-drawutils.drawBlankCard(playerCard)
-drawutils.drawSymbol(12, 3, "arrow", playerCard)
-drawutils.drawCardNumber(5, 10, 6, playerCard)
-drawutils.drawBlankCard(playerCard)
-playerCard.redraw()
+local playerCard = window.create(monitor, secondPos, 30, cardWidth, cardHeight, true)
+drawutils.drawAGameCard(playerCard,firstPlayerCardType,firstPlayerCardNumber)
+
+local playerCard2 = window.create(monitor, secondPos +13, 30, cardWidth, cardHeight, false)
+drawutils.drawAGameCard(playerCard2,secondPlayerCardType, secondPlayerCardNumber)
+
+local playerCard3 = window.create(monitor, thirdPos, 30, cardWidth, cardHeight, false)
+drawutils.drawAGameCard(playerCard3, thirdPlayerCardType, thirdPlayerCardNumber)
+
+
+while gameStage == 1 do 
+  local event, side, x, y = os.pullEvent("monitor_touch")
+  print("" .. x .. " " .. y .. " " .. side)
+  if(x >= 13 and x <= 10 + cardWidth and y >= 55 and y <= 65) then 
+    drawutils.moveAGameCard(playerCard,firstPlayerCardType,firstPlayerCardNumber,firstPos+15,30)
+    playerCard2.setVisible(true)
+    gameStage = 2;
+  end
+
+  if(x >= 13 and x <= 10 + cardWidth and y >= 55 and y <= 65) then 
+    -- Stand Button
+  end
+end
+
+while gameStage == 2 do 
+  local event, side, x, y = os.pullEvent("monitor_touch")
+  print("" .. x .. " " .. y .. " " .. side)
+  if(x >= 13 and x <= 10 + cardWidth and y >= 55 and y <= 65) then 
+    drawutils.moveAGameCard(playerCard,firstPlayerCardType,firstPlayerCardNumber, firstPos,30)
+    drawutils.moveAGameCard(playerCard2 ,secondPlayerCardType, secondPlayerCardNumber, secondPos, 30)
+    playerCard3.setVisible(true)
+    hitButton.setBackgroundColor(colors.green)
+    hitButton.clear()
+    hitButton.redraw()
+    standButton.setBackgroundColor(colors.green)
+    standButton.clear()
+    standButton.reposition(20, 55, cardWidth+38, 10)
+    standButton.setBackgroundColor(colors.white)
+    standButton.clear()
+    gameStage = 3;
+  end
+
+  if(x >= 13 and x <= 10 + cardWidth and y >= 55 and y <= 65) then 
+    -- Stand Button
+  end
+end
+
 
 
 while true do
-    
-
     local event = os.pullEventRaw("terminate")
     if event == "terminate" then 
         monitor.setTextScale(1.35)
@@ -100,9 +147,7 @@ while true do
         monitor.write("The Cake is a lie")
         monitor.setCursorPos(1, 27  )
         monitor.write("Thanks for playing my game :3")
-
-
-        os.shutdown()
+        os.reboot()
     end
   end        
  
