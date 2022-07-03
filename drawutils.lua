@@ -8,7 +8,7 @@ function module.drawPixel(term, x, y, color)
 
 end
 
-function module.drawPixelWithMargin(term, x, y, color,MarginX,MarginY)
+function module.drawPixelWithMargin(term, x, y, color, MarginX,MarginY)
     term.setBackgroundColour(color)
     term.setCursorPos(x+MarginX, y+MarginY)
     term.write(" ")
