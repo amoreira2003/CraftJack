@@ -16,6 +16,7 @@ local firstPos = margin;
 local secondPos = margin + cardWidth
 local thirdPos = margin + cardWidth * 2
 
+local disk = peripheral.wrap("left")
 local monitor = peripheral.wrap("back")
 
 monitor.setBackgroundColor(colors.blue)
@@ -24,9 +25,34 @@ monitor.setCursorPos(1, 1)
 monitor.setTextScale(0.6)
 
 while gameStage == 0 do
-    local event, side, x, y = os.pullEvent("monitor_touch")
+    local event, side = os.pullEvent("disk")
+    os.sleep(2)
+
+    if not fs.exists("disk/balance.lua") then
+        print("Not a valid disk")
+        disk.ejectDisk()
+        os.sleep(2)
+        os.reboot()
+    end
+    
+    local file = fs.open("disk/balance.lua", "r") 
+    local balance = tonumber(file.readAll())
+    file.close() 
+    if balance < 5 then 
+        print("Not enough money")
+        disk.ejectDisk()
+        os.reboot()
+    end
+    fs.delete("disk/balance.lua")
+    local file = fs.open("disk/balance.lua", "w") 
+    file.write(balance-5)
+    file.close() 
     gameStage = 1;
 end
+
+
+
+
 
 monitor.setBackgroundColor(colors.green)
 monitor.clear()
@@ -161,6 +187,7 @@ while true do
     end
 
     if gameStage == 4 then
+      disk.ejectDisk()  
       os.sleep(5)
       os.reboot()
     end
