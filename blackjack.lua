@@ -23,6 +23,7 @@ monitor.setBackgroundColor(colors.blue)
 monitor.clear()
 monitor.setCursorPos(1, 1)
 monitor.setTextScale(0.6)
+print(monitor.getSize())
 
 while gameStage == 0 do
     local event, side = os.pullEvent("disk")
