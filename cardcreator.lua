@@ -3,6 +3,9 @@ print("What did you expect it is 2022 you dumb fuck")
 print("")
 print("Please insert an empty disk (the data will be overrided)")
 
+local monitor = peripheral.wrap("back")
+local disk = peripheral.wrap("left")
+
 while true do
     local event, side = os.pullEvent("disk")
     break
@@ -19,8 +22,6 @@ while true do
         os.sleep(5)
         os.reboot()
     end
-
-    local disk = peripheral.wrap("left")
 
     if fs.exists("disk/balance.lua") then
         fs.delete("disk/balance.lua")

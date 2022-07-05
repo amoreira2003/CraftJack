@@ -75,6 +75,26 @@ end
 
 end
 
+function module.drawAlternatePixelBoxTitle(term, startX, startY, finalX, finalY, color1)
+    alternateIndex = 0
+    for x = startX, finalX do
+
+        for y = startY, finalY do
+
+            if (y % 2 == 0 and x % 2 == 0) then
+                module.drawPixel(term, x, y, color1)
+                module.drawPixel(term, x+1, y+1, color1)
+            end
+
+             
+
+
+        end
+    end
+
+end
+
+
  function module.drawHorizontalPixelLine(term, startX, finalX, indexY, colors)
     for x = startX, finalX do module.drawPixel(term, x, indexY, colors) end
 

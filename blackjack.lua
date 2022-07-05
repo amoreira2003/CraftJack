@@ -16,44 +16,24 @@ local firstPos = margin;
 local secondPos = margin + cardWidth
 local thirdPos = margin + cardWidth * 2
 
-local disk = peripheral.wrap("left")
 local monitor = peripheral.wrap("back")
-
-monitor.setBackgroundColor(colors.blue)
+monitor.setPaletteColour(colors.green, 0.14, 0.48, 0.10)
+monitor.setBackgroundColor(colors.green)
 monitor.clear()
 monitor.setCursorPos(1, 1)
 monitor.setTextScale(0.6)
+--drawutils.drawAlternatePixelBoxTitle(monitor,0,0,100,68,colors.lime)
 print(monitor.getSize())
 
 while gameStage == 0 do
-    local event, side = os.pullEvent("disk")
-    os.sleep(2)
 
-    if not fs.exists("disk/balance.lua") then
-        print("Not a valid disk")
-        disk.ejectDisk()
-        os.sleep(2)
-        os.reboot()
-    end
-    
-    local file = fs.open("disk/balance.lua", "r") 
-    local balance = tonumber(file.readAll())
-    file.close() 
-    if balance < 5 then 
-        print("Not enough money")
-        disk.ejectDisk()
-        os.reboot()
-    end
-    fs.delete("disk/balance.lua")
-    local file = fs.open("disk/balance.lua", "w") 
-    file.write(balance-5)
-    file.close() 
+    local image = paintutils.loadImage("CraftJack/title")
+    term.redirect(monitor)
+    paintutils.drawImage(image, 1, 1)
+    term.redirect(term.native())
+    local event, side = os.pullEvent("monitor_touch")
     gameStage = 1;
 end
-
-
-
-
 
 monitor.setBackgroundColor(colors.green)
 monitor.clear()
@@ -185,10 +165,10 @@ while true do
         gameutils.checkWhoWon(finalDealerNumber, finalPlayerNumber)
         gameStage = 4
 
+        
     end
 
-    if gameStage == 4 then
-      disk.ejectDisk()  
+    if gameStage == 4 then 
       os.sleep(5)
       os.reboot()
     end
