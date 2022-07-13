@@ -2,6 +2,7 @@ local module = {}
 
 
 local monitor = peripheral.wrap("back")
+local audio = peripheral.wrap("left")
 
 function module.translateTableGetToInteger(number)
     local returnNumber = 0
@@ -23,15 +24,19 @@ function module.translateTableGetToInteger(number)
 end
 
 function module.playerwon()
+    os.sleep(1)
     local image = paintutils.loadImage("CraftJack/playerwon")
     term.redirect(monitor)
-    paintutils.drawImage(image, 30, 33)
+    paintutils.drawImage(image, 30, 55)
     term.redirect(term.native())
+    audio.playNote("pling")
     print("Player Won")
     
 end
 
 function module.dealerwon()
+    os.sleep(1)
+    audio.playNote("bass")
     local image = paintutils.loadImage("CraftJack/dealerwon")
     term.redirect(monitor)
     paintutils.drawImage(image, 30, 55)
@@ -41,6 +46,8 @@ function module.dealerwon()
 end
 
 function module.drawn()
+    os.sleep(1)
+    audio.playNote("basedrum")
     local image = paintutils.loadImage("CraftJack/draw")
     term.redirect(monitor)
     paintutils.drawImage(image, 30, 55)

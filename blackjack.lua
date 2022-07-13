@@ -17,6 +17,8 @@ local secondPos = margin + cardWidth
 local thirdPos = margin + cardWidth * 2
 
 local monitor = peripheral.wrap("back")
+local audio = peripheral.wrap("left")
+
 monitor.setPaletteColour(colors.green, 0.14, 0.48, 0.10)
 monitor.setBackgroundColor(colors.green)
 monitor.clear()
@@ -82,16 +84,19 @@ drawutils.drawAGameCard(playerCard2, secondPlayerCardType, secondPlayerCardNumbe
 local playerCard3 = window.create(monitor, thirdPos, 30, cardWidth, cardHeight, false)
 drawutils.drawAGameCard(playerCard3, thirdPlayerCardType, thirdPlayerCardNumber)
 
+audio.playNote("snare")
 while gameStage == 1 do
     local event, side, x, y = os.pullEvent("monitor_touch")
     print("" .. x .. " " .. y .. " " .. side)
     if (x >= 13 and x <= 10 + cardWidth and y >= 55 and y <= 65) then
         drawutils.moveAGameCard(playerCard, firstPlayerCardType, firstPlayerCardNumber, firstPos+10, 30)
         playerCard2.setVisible(true)
+        audio.playNote("hat")
         gameStage = 2;
     end
 
     if (x >= 52 and x <= 86 + cardWidth and y >= 55 and y <= 65) then
+        audio.playNote("hat")
         hitButton.setBackgroundColor(colors.green)
         hitButton.clear()
         hitButton.redraw()
@@ -127,10 +132,12 @@ while gameStage == 2 do
         standButton.setBackgroundColor(colors.green)
         standButton.clear()
         drawutils.drawAGameCard(SecondDealerCard, HiddenCardType, hiddenCardNumber)
+        audio.playNote("hat")
         gameStage = 3;
     end
 
     if (x >= 52 and x <= 86 + cardWidth and y >= 55 and y <= 65) then
+        audio.playNote("hat")
         hitButton.setBackgroundColor(colors.green)
         hitButton.clear()
         hitButton.redraw()
@@ -152,6 +159,7 @@ end
 
 while true do
     if gameStage == 3 then
+        audio.playNote("hat")
         hitButton.setBackgroundColor(colors.green)
         hitButton.clear()
         hitButton.redraw()
@@ -164,12 +172,10 @@ while true do
         local finalPlayerNumber = gameutils.translateTableGetToInteger(firstPlayerCardNumber) + gameutils.translateTableGetToInteger(secondPlayerCardNumber) + gameutils.translateTableGetToInteger(thirdPlayerCardNumber)
         gameutils.checkWhoWon(finalDealerNumber, finalPlayerNumber)
         gameStage = 4
-
-        
     end
 
     if gameStage == 4 then 
-      os.sleep(5)
+      os.sleep(3)
       os.reboot()
     end
 
