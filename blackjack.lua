@@ -29,7 +29,7 @@ while gameStage == 0 do
 
     local image = paintutils.loadImage("CraftJack/title")
     term.redirect(monitor)
-    paintutils.drawImage(image, 1, 1)
+    paintutils.drawImage(image, 32, 33)
     term.redirect(term.native())
     local event, side = os.pullEvent("monitor_touch")
     gameStage = 1;
@@ -76,7 +76,7 @@ SecondDealerCard.redraw()
 local playerCard = window.create(monitor, secondPos, 30, cardWidth, cardHeight, true)
 drawutils.drawAGameCard(playerCard, firstPlayerCardType, firstPlayerCardNumber)
 
-local playerCard2 = window.create(monitor, secondPos + 13, 30, cardWidth, cardHeight, false)
+local playerCard2 = window.create(monitor, secondPos + 15, 30, cardWidth, cardHeight, false)
 drawutils.drawAGameCard(playerCard2, secondPlayerCardType, secondPlayerCardNumber)
 
 local playerCard3 = window.create(monitor, thirdPos, 30, cardWidth, cardHeight, false)
@@ -86,7 +86,7 @@ while gameStage == 1 do
     local event, side, x, y = os.pullEvent("monitor_touch")
     print("" .. x .. " " .. y .. " " .. side)
     if (x >= 13 and x <= 10 + cardWidth and y >= 55 and y <= 65) then
-        drawutils.moveAGameCard(playerCard, firstPlayerCardType, firstPlayerCardNumber, firstPos + 15, 30)
+        drawutils.moveAGameCard(playerCard, firstPlayerCardType, firstPlayerCardNumber, firstPos+10, 30)
         playerCard2.setVisible(true)
         gameStage = 2;
     end
