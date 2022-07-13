@@ -25,8 +25,7 @@ monitor.clear()
 monitor.setCursorPos(1, 1)
 monitor.setTextScale(0.6)
 --drawutils.drawAlternatePixelBoxTitle(monitor,0,0,100,68,colors.lime)
-print(monitor.getSize())
-
+--print(monitor.getSize())
 while gameStage == 0 do
 
     local image = paintutils.loadImage("CraftJack/title")
@@ -103,16 +102,11 @@ while gameStage == 1 do
         standButton.setBackgroundColor(colors.green)
         standButton.clear()
         drawutils.drawAGameCard(SecondDealerCard, HiddenCardType, hiddenCardNumber)
-        print("finalDealerNumber " .. gameutils.translateTableGetToInteger(hiddenCardNumber) .. " dealerCardNumber " ..
-                  gameutils.translateTableGetToInteger(dealerCardNumber))
-        local finalDealerNumber = gameutils.translateTableGetToInteger(hiddenCardNumber) +
-                                      gameutils.translateTableGetToInteger(dealerCardNumber)
-        print("finalPlayerNumber " .. gameutils.translateTableGetToInteger(firstPlayerCardNumber) ..
-                  " secondPlayerCardNumber " .. gameutils.translateTableGetToInteger(secondPlayerCardNumber))
-        local finalPlayerNumber = gameutils.translateTableGetToInteger(firstPlayerCardNumber) +
-                                      gameutils.translateTableGetToInteger(secondPlayerCardNumber)
-        local finalDealerNumber = gameutils.translateTableGetToInteger(hiddenCardNumber) +
-                                      gameutils.translateTableGetToInteger(dealerCardNumber)
+        --print("finalDealerNumber " .. gameutils.translateTableGetToInteger(hiddenCardNumber) .. " dealerCardNumber " .. gameutils.translateTableGetToInteger(dealerCardNumber))
+        local finalDealerNumber = gameutils.translateTableGetToInteger(hiddenCardNumber) + gameutils.translateTableGetToInteger(dealerCardNumber)
+        --print("finalPlayerNumber " .. gameutils.translateTableGetToInteger(firstPlayerCardNumber) .. " secondPlayerCardNumber " .. gameutils.translateTableGetToInteger(secondPlayerCardNumber))
+        local finalPlayerNumber = gameutils.translateTableGetToInteger(firstPlayerCardNumber) + gameutils.translateTableGetToInteger(secondPlayerCardNumber)
+        local finalDealerNumber = gameutils.translateTableGetToInteger(hiddenCardNumber) + gameutils.translateTableGetToInteger(dealerCardNumber)
         local finalPlayerNumber = gameutils.translateTableGetToInteger(firstPlayerCardNumber)
         gameutils.checkWhoWon(finalDealerNumber, finalPlayerNumber)
         gameStage = 4
@@ -144,14 +138,10 @@ while gameStage == 2 do
         standButton.setBackgroundColor(colors.green)
         standButton.clear()
         drawutils.drawAGameCard(SecondDealerCard, HiddenCardType, hiddenCardNumber)
-        print("finalDealerNumber " .. gameutils.translateTableGetToInteger(hiddenCardNumber) .. " dealerCardNumber " ..
-                  gameutils.translateTableGetToInteger(dealerCardNumber))
-        local finalDealerNumber = gameutils.translateTableGetToInteger(hiddenCardNumber) +
-                                      gameutils.translateTableGetToInteger(dealerCardNumber)
-        print("finalPlayerNumber " .. gameutils.translateTableGetToInteger(firstPlayerCardNumber) ..
-                  " secondPlayerCardNumber " .. gameutils.translateTableGetToInteger(secondPlayerCardNumber))
-        local finalPlayerNumber = gameutils.translateTableGetToInteger(firstPlayerCardNumber) +
-                                      gameutils.translateTableGetToInteger(secondPlayerCardNumber)
+        --print("finalDealerNumber " .. gameutils.translateTableGetToInteger(hiddenCardNumber) .. " dealerCardNumber " .. gameutils.translateTableGetToInteger(dealerCardNumber))
+        local finalDealerNumber = gameutils.translateTableGetToInteger(hiddenCardNumber) + gameutils.translateTableGetToInteger(dealerCardNumber)
+        --print("finalPlayerNumber " .. gameutils.translateTableGetToInteger(firstPlayerCardNumber) ..  " secondPlayerCardNumber " .. gameutils.translateTableGetToInteger(secondPlayerCardNumber))
+        local finalPlayerNumber = gameutils.translateTableGetToInteger(firstPlayerCardNumber) +  gameutils.translateTableGetToInteger(secondPlayerCardNumber)
         gameutils.checkWhoWon(finalDealerNumber, finalPlayerNumber)
         gameStage = 4
     end
@@ -166,9 +156,9 @@ while true do
         standButton.setBackgroundColor(colors.green)
         standButton.clear()
         drawutils.drawAGameCard(SecondDealerCard, HiddenCardType, hiddenCardNumber)
-        print("finalDealerNumber " .. gameutils.translateTableGetToInteger(hiddenCardNumber) .. " dealerCardNumber " .. gameutils.translateTableGetToInteger(dealerCardNumber))
+        --print("finalDealerNumber " .. gameutils.translateTableGetToInteger(hiddenCardNumber) .. " dealerCardNumber " .. gameutils.translateTableGetToInteger(dealerCardNumber))
         local finalDealerNumber = gameutils.translateTableGetToInteger(hiddenCardNumber) + gameutils.translateTableGetToInteger(dealerCardNumber)
-        print("finalPlayerNumber " .. gameutils.translateTableGetToInteger(firstPlayerCardNumber) .. " secondPlayerCardNumber " .. gameutils.translateTableGetToInteger(secondPlayerCardNumber) .. " thirdPlayerCard " .. gameutils.translateTableGetToInteger(thirdPlayerCardNumber))
+        --print("finalPlayerNumber " .. gameutils.translateTableGetToInteger(firstPlayerCardNumber) .. " secondPlayerCardNumber " .. gameutils.translateTableGetToInteger(secondPlayerCardNumber) .. " thirdPlayerCard " .. gameutils.translateTableGetToInteger(thirdPlayerCardNumber))
         local finalPlayerNumber = gameutils.translateTableGetToInteger(firstPlayerCardNumber) + gameutils.translateTableGetToInteger(secondPlayerCardNumber) + gameutils.translateTableGetToInteger(thirdPlayerCardNumber)
         gameutils.checkWhoWon(finalDealerNumber, finalPlayerNumber)
         gameStage = 4

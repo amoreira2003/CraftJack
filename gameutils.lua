@@ -52,7 +52,7 @@ function module.drawn()
     term.redirect(monitor)
     paintutils.drawImage(image, 30, 55)
     term.redirect(term.native())
-    print("Player Won")
+    print("Drawn")
     
 end
 
@@ -61,7 +61,7 @@ function module.checkWhoWon(finalDealerNumber, finalPlayerNumber)
     print(finalDealerNumber .. " " .. finalPlayerNumber)
 
     if finalDealerNumber == finalPlayerNumber then
-        module.draw()
+        module.drawn()
     end
 
     if finalDealerNumber > 21 and finalPlayerNumber < 21 then
