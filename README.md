@@ -1,14 +1,3 @@
-![Banner](craftjack.png)
-
-### 😀 Introdução
-
-
-
-### 🤴 Sobre o Projeto
-
-
-
-
 ### 🛠 Tecnologias
 
 As seguintes ferramentas foram usadas na construção do projeto:
